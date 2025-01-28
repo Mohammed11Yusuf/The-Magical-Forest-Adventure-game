@@ -1,0 +1,55 @@
+//JAVA SCRIPT
+const scenes = {
+    start: {
+        description: "You find yourself at the edge of a magical forest. The trees are tall, and you can hear the chirping of birds and the rustling of leaves. In front of you, there are three paths leading deeper into the forest.",
+        choices: [
+            { text: "Take the left path.", nextScene: "leftPath" },
+            { text: "Take the middle path.", nextScene: "middlePath" },
+            { text: "Take the right path.", nextScene: "rightPath" }
+        ]
+    },
+    leftPath: {
+        description: "You follow the left path and soon come across a beautiful enchanted pond. The water is crystal clear, and you can see colorful fish swimming around. There's a friendly frog on a lily pad, ready to talk to you.",
+        choices: [
+            { text: "Talk to the frog.", nextScene: "talkToFrog" },
+            { text: "Throw a pebble into the pond.", nextScene: "throwPebble" },
+            { text: "Sit by the pond and listen to the sounds of nature.", nextScene: "sitByPond" }
+        ]
+    },
+    middlePath: {
+        description: "The middle path leads you to a hidden treehouse high up in the trees. A rope ladder hangs down, inviting you to climb up. You can see a little squirrel peeking out from the top.",
+        choices: [
+            { text: "Climb up the rope ladder.", nextScene: "climbLadder" },
+            { text: "Call out to the squirrel.", nextScene: "callSquirrel" },
+            { text: "Look around the base of the tree for hidden treasures.", nextScene: "lookForTreasures" }
+        ]
+    },
+    rightPath: {
+        description: "The right path opens up into a colorful flower meadow. Butterflies are fluttering around, and you can see a rainbow in the sky. There's a gentle breeze, and you can smell the sweet fragrance of flowers.",
+        choices: [
+            { text: "Chase the butterflies.", nextScene: "chaseButterflies" },
+            { text: "Pick some flowers.", nextScene: "pickFlowers" },
+            { text: "Lie down in the meadow and watch the clouds.", nextScene: "watchClouds" }
+        ]
+    },
+    // Add more scenes and choices as needed
+};
+
+function startAdventure() {
+    document.querySelector("button").style.display = "none";
+    document.getElementById("story").classList.remove("hidden");
+    showScene("start");
+}
+
+function showScene(scene) {
+    const sceneData = scenes[scene];
+    document.getElementById("scene-description").innerText = sceneData.description;
+    const choicesElement = document.getElementById("choices");
+    choicesElement.innerHTML = "";
+    sceneData.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.innerText = choice.text;
+        button.onclick = () => showScene(choice.nextScene);
+        choicesElement.appendChild(button);
+    });
+}
