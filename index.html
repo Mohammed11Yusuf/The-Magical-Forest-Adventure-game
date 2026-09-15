@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A small interactive choose-your-path adventure game built with HTML, CSS and JavaScript.">
+    <title>Magical Forest Adventure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>🌲 Welcome to the Magical Forest</h1>
+        <p>Choose your path and begin your adventure.</p>
+        <button id="start-button" onclick="startAdventure()">Start Your Journey</button>
+        <section id="story" class="hidden" aria-live="polite">
+            <p id="scene-description"></p>
+            <div id="choices"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
